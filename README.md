@@ -65,7 +65,7 @@ git push origin main
 
 ### 프로필 링크
 
-Scholar, GitHub, LinkedIn은 실제 프로필에 연결되어 있습니다. 이메일은 소개 아래 별도 줄에 `Email`로 표시하며, 클릭하면 메일 앱을 엽니다. 변경할 때는 `content/site.json`의 `email`과 `social`을 수정합니다. 프로필 주소를 빈 문자열로 두면 해당 링크는 “Link coming soon” placeholder로 표시됩니다.
+Scholar, GitHub, LinkedIn은 실제 프로필에 연결되어 있습니다. 이메일은 다른 프로필 링크와 같은 줄에 `Email`로 표시하며, 클릭하면 메일 앱을 엽니다. 변경할 때는 `content/site.json`의 `email`과 `social`을 수정합니다. 프로필 주소를 빈 문자열로 두면 해당 링크는 “Link coming soon” placeholder로 표시됩니다.
 
 ### 이미지 교체
 

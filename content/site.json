@@ -12,21 +12,21 @@
   "portraitHeight": 400,
   "affiliation": "KAIST AI",
   "affiliationUrl": "https://gsai.kaist.ac.kr/",
-  "lab": "Computer Vision Lab",
+  "lab": "CVLAB",
   "labUrl": "https://cvlab.kaist.ac.kr/",
   "advisor": "Seungryong Kim",
   "advisorUrl": "https://cvlab.kaist.ac.kr/members/faculty",
   "bio": "My research interests lie in building practical 3D/4D generative models for real-world applications.",
   "contactText": "I am always open to discussions and collaborations, so please feel free to reach out.",
-  "email": "",
+  "email": "rlawodud112294@gmail.com",
   "interests": [
     "3D/4D Generative Models",
     "Real-World Applications"
   ],
   "social": {
-    "scholar": "",
-    "github": "",
-    "linkedin": ""
+    "scholar": "https://scholar.google.com/citations?user=7rvZgpEAAAAJ&hl=ko",
+    "github": "https://github.com/kjae0",
+    "linkedin": "https://www.linkedin.com/in/jaeyeong-kim-3946432a9/"
   },
   "news": [
     {

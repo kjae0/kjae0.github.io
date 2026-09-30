@@ -63,9 +63,9 @@ git push origin main
 | 최종 수정일 | `updated` (`YYYY-MM-DD`) |
 | 실제 배포 주소 | `siteUrl` |
 
-### 링크 placeholder 교체
+### 프로필 링크
 
-요청에 따라 Scholar, GitHub, LinkedIn 주소는 모두 빈 문자열로 두었습니다. 화면에는 이름과 아이콘이 표시되고, 포커스하거나 마우스를 올리면 “Link coming soon”이 나타납니다. 주소가 비어 있을 때는 외부 이동하지 않습니다. HTTPS 주소를 입력하면 다음 빌드부터 실제 링크가 됩니다.
+Scholar, GitHub, LinkedIn은 실제 프로필에 연결되어 있습니다. 이메일은 소개 아래 별도 줄에 표시하며, 클릭하면 메일 앱을 엽니다. 변경할 때는 `content/site.json`의 `email`과 `social`을 수정합니다. 프로필 주소를 빈 문자열로 두면 해당 링크는 “Link coming soon” placeholder로 표시됩니다.
 
 ### 이미지 교체
 

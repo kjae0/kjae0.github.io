@@ -1,0 +1,216 @@
+{
+  "name": "Jaeyeong Kim",
+  "initials": "JK",
+  "title": "Jaeyeong Kim · KAIST AI",
+  "description": "Jaeyeong Kim is an integrated M.S./Ph.D. student at KAIST AI, advised by Prof. Seungryong Kim. Research in practical 3D/4D generative models for real-world applications.",
+  "siteUrl": "https://kjae0.github.io/",
+  "updated": "2026-09-30",
+  "portrait": "assets/images/portrait.jpg",
+  "portraitAlt": "Portrait of Jaeyeong Kim",
+  "portraitIsPlaceholder": false,
+  "portraitWidth": 400,
+  "portraitHeight": 400,
+  "affiliation": "KAIST AI",
+  "affiliationUrl": "https://gsai.kaist.ac.kr/",
+  "lab": "Computer Vision Lab",
+  "labUrl": "https://cvlab.kaist.ac.kr/",
+  "advisor": "Seungryong Kim",
+  "advisorUrl": "https://cvlab.kaist.ac.kr/members/faculty",
+  "bio": "My research interests lie in building practical 3D/4D generative models for real-world applications.",
+  "contactText": "I am always open to discussions and collaborations, so please feel free to reach out.",
+  "email": "",
+  "interests": [
+    "3D/4D Generative Models",
+    "Real-World Applications"
+  ],
+  "social": {
+    "scholar": "",
+    "github": "",
+    "linkedin": ""
+  },
+  "news": [
+    {
+      "date": "2026",
+      "label": "2026",
+      "text": "T2Mo has been accepted to NeurIPS 2026.",
+      "publication": "t2mo"
+    },
+    {
+      "date": "2026",
+      "label": "2026",
+      "text": "MV-TAP has been accepted to CVPR 2026.",
+      "publication": "mv-tap"
+    },
+    {
+      "date": "2026",
+      "label": "2026",
+      "text": "SpLap has been accepted to 3DV 2026.",
+      "publication": "splap"
+    }
+  ],
+  "education": [
+    {
+      "school": "KAIST",
+      "detail": "Kim Jaechul Graduate School of AI",
+      "degree": "Integrated M.S. / Ph.D.",
+      "advisor": "Seungryong Kim",
+      "advisorUrl": "https://cvlab.kaist.ac.kr/members/faculty",
+      "mark": "K",
+      "current": true
+    },
+    {
+      "school": "Seoul National University",
+      "detail": "Bachelor of Science",
+      "degree": "B.S.",
+      "mark": "S",
+      "current": false
+    }
+  ],
+  "publications": [
+    {
+      "id": "t2mo",
+      "title": "T2Mo: Controllable Dynamic 3D Shape Generation via 3D Trajectories and Text",
+      "citationTitle": "Controllable Dynamic 3D Shape Generation via 3D Trajectories and Text",
+      "shortTitle": "T2Mo",
+      "authors": [
+        "Jaeyeong Kim",
+        "Ines Kim",
+        "Jahyeok Koo",
+        "Seungryong Kim"
+      ],
+      "year": 2026,
+      "venue": "NeurIPS",
+      "type": "conference",
+      "topic": "CONTROLLABLE 3D MOTION",
+      "description": "Bringing 3D shapes to life with trajectory and text guidance.",
+      "image": "assets/images/t2mo-poster.jpg",
+      "accent": "sage",
+      "arxiv": "2606.05162",
+      "links": [
+        {
+          "label": "Project",
+          "url": "https://cvlab-kaist.github.io/T2Mo/"
+        },
+        {
+          "label": "Paper",
+          "url": "https://arxiv.org/pdf/2606.05162"
+        },
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2606.05162"
+        }
+      ],
+      "booktitle": "Advances in Neural Information Processing Systems",
+      "video": "assets/videos/t2mo.mp4",
+      "imageWidth": 2048,
+      "imageHeight": 1024
+    },
+    {
+      "id": "morphos",
+      "title": "MORPHOS: Autoregressive 4D Generation with Temporal Structured Latents",
+      "shortTitle": "MORPHOS",
+      "authors": [
+        "Minkyung Kwon",
+        "Jinhyeok Choi",
+        "Youngjin Shin",
+        "Jaeyeong Kim",
+        "JongMin Lee",
+        "Seungryong Kim"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "type": "preprint",
+      "topic": "DYNAMIC 3D GENERATION",
+      "description": "Generating dynamic 3D assets with a unified temporal representation.",
+      "image": "assets/images/morphos.png",
+      "accent": "lavender",
+      "arxiv": "2606.02491",
+      "links": [
+        {
+          "label": "Paper",
+          "url": "https://arxiv.org/pdf/2606.02491"
+        },
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2606.02491"
+        }
+      ],
+      "imageWidth": 1800,
+      "imageHeight": 992
+    },
+    {
+      "id": "mv-tap",
+      "title": "MV-TAP: Tracking Any Point in Multi-View Videos",
+      "shortTitle": "MV-TAP",
+      "authors": [
+        "Jahyeok Koo",
+        "Inès Hyeonsu Kim",
+        "Mungyeom Kim",
+        "Junghyun Park",
+        "Seohyun Park",
+        "Jaeyeong Kim",
+        "Jung Yi",
+        "Seokju Cho",
+        "Seungryong Kim"
+      ],
+      "year": 2026,
+      "venue": "CVPR",
+      "type": "conference",
+      "topic": "MULTI-VIEW POINT TRACKING",
+      "description": "Following points through time and across camera views.",
+      "image": "assets/images/mv-tap.png",
+      "accent": "sand",
+      "booktitle": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+      "links": [
+        {
+          "label": "Paper",
+          "url": "https://arxiv.org/pdf/2512.02006"
+        },
+        {
+          "label": "Code",
+          "url": "https://github.com/cvlab-kaist/MV-TAP"
+        },
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2512.02006"
+        }
+      ],
+      "imageWidth": 1191,
+      "imageHeight": 330
+    },
+    {
+      "id": "splap",
+      "title": "Proxy-Free Gaussian Splats Deformation with Splat-Based Surface Estimation",
+      "shortTitle": "SpLap",
+      "authors": [
+        "Jaeyeong Kim",
+        "Seungwoo Yoo",
+        "Minhyuk Sung"
+      ],
+      "year": 2026,
+      "venue": "3DV",
+      "type": "conference",
+      "topic": "GAUSSIAN SPLAT DEFORMATION",
+      "description": "Deforming Gaussian splats directly while preserving surface structure.",
+      "image": "assets/images/splap.png",
+      "accent": "blue",
+      "booktitle": "International Conference on 3D Vision (3DV)",
+      "links": [
+        {
+          "label": "Paper",
+          "url": "https://arxiv.org/pdf/2511.19542"
+        },
+        {
+          "label": "Code",
+          "url": "https://github.com/kjae0/SpLap"
+        },
+        {
+          "label": "arXiv",
+          "url": "https://arxiv.org/abs/2511.19542"
+        }
+      ],
+      "imageWidth": 320,
+      "imageHeight": 180
+    }
+  ]
+}

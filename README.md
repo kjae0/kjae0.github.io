@@ -1,189 +1,123 @@
-# Hamilton <!-- omit in toc -->
+# Jaeyeong Kim — Academic Homepage
 
-A minimal and beautiful Jekyll theme best for writing and note-taking.
+KAIST AI 연구자 홈페이지입니다. 별도의 프레임워크나 패키지 설치 없이 Node.js만으로 빌드하며, GitHub Pages에 배포할 수 있습니다.
 
-The original purpose of this theme is to be a replacement of the default Jekyll theme -- [Minima](https://github.com/jekyll/minima). Hamilton is an enhancement of Minima but still, keep in minimal.
+## 로컬 실행
 
-Please check out the [demo](https://ngzhio.github.io/jekyll-theme-hamilton/).
+Node.js 22 이상이 필요합니다. `.nvmrc`는 Node.js 24를 사용합니다.
 
-| Skins | Displays |
-| ----- | -------- |
-| Daylight | ![screenshot](screenshot.png) |
-| Sunrise/Sunset | ![screenshot](screenshot-sunrise.png) |
-| Midnight | ![screenshot](screenshot-midnight.png) |
-
-## Features <!-- omit in toc -->
-
-- [Jekyll SEO Tag](https://github.com/jekyll/jekyll-seo-tag)
-- [Jekyll Feed](https://github.com/jekyll/jekyll-feed)
-- [Jekyll Sitemap](https://github.com/jekyll/jekyll-sitemap)
-- [Google Analytics](https://analytics.google.com/)
-- [MathJax](https://www.mathjax.org/)
-- [Disqus](https://disqus.com/)
-- [Font Awesome](https://fontawesome.com/)
-- TOC
-- Customizable head
-- Configurable page navigation
-- Customizable styles and skins
-- Archive pages implemented in pure Liquid
-
-## Table of Contents <!-- omit in toc -->
-
-- [Installation](#installation)
-- [Configuration](#configuration)
-  - [Optional Parameters](#optional-parameters)
-- [Archive Pages](#archive-pages)
-- [MathJax](#mathjax)
-- [TOC](#toc)
-- [Customization](#customization)
-  - [Metadata](#metadata)
-  - [Navigation](#navigation)
-  - [Social Media](#social-media)
-  - [Skins](#skins)
-  - [More Customized Styles](#more-customized-styles)
-- [License](#license)
-
-## Installation
-
-You can choose one of the following methods to install Hamilton:
-
-- Directly specify the `jekyll-theme-hamilton` gem.
-
-    1. Add `gem 'jekyll-theme-hamilton'` into your `Gemfile`.
-    2. Add the below lines into your `_config.yml`.
-
-        ```yml
-        plugins:
-          - jekyll-theme-hamilton
-        ```
-
-- If your site is hosted on GitHub Pages, you can use [`jekyll-remote-theme`](https://github.com/benbalter/jekyll-remote-theme) to import the master branch of Hamilton.
-
-    1. Add `gem 'jekyll-remote-theme'` into your `Gemfile`.
-    2. Add the below lines into your `_config.yml`.
-
-        ```yml
-        plugins:
-          - jekyll-remote-theme
-
-        remote_theme: ngzhio/jekyll-theme-hamilton
-        ```
-
-## Configuration
-
-After installation, you can run `jekyll serve` to check out your site, but before that, *make sure* the below **required parameters** are configured in your `_config.yml`.
-
-| Parameters | Types | Specifications |
-|:---------- |:----- |:-------------- |
-| `title`    | string | The site title |
-| `disqus`   | string | The Disqus shortname; Unless you don't want to enable the comments system, you must specify this parameter. It is used in the production environment. |
-| `google_analytics` | string | The Google Analytics tracking ID; It is used in the production environment. |
-
-### Optional Parameters
-
-| Parameters | Types | Specifications |
-|:---------- |:----- |:-------------- |
-| `author`   | string | The name of the author of the site; It would be showed in the copyright statement. |
-| `avatar`   | string | The avatar of the author of the site. |
-| `email`    | string | The email of the author of the site. |
-| `location` | string | The current living location of the author of the site. |
-| `skin`     | string | The skin name. See more information on the [Customization](#customization) section. |
-| `lang`     | string | The language of the site; The default value is `en`. |
-| `paginate` | int    | The number of posts on each page. |
-| `date_format` | string | The date format; The default value is `%b %-d, %Y`. |
-| `subscribe` | boolean | Show the subsribe feed button. |
-
-## Archive Pages
-
-Hamilton implements some archive templates in pure Liquid. For example, if you want to create a category archive page, set the below parameters on that page:
-
-```yml
----
-layout: archive-taxonomies
-type: categories
----
+```sh
+npm run dev
 ```
 
-Or a tag archive page:
+<http://localhost:4321>을 엽니다. 파일을 수정하면 자동으로 재빌드됩니다. 브라우저를 새로고침하면 반영됩니다. `npm install`은 필요하지 않습니다.
 
-```yml
-layout: archive-taxonomies
-type: tags
+```sh
+npm run build   # dist/에 정적 사이트 생성
+npm run check   # 링크, 에셋, 메타데이터와 콘텐츠 검사
+npm run preview # 빌드 결과를 localhost:4321에서 확인
 ```
 
-Or archive by years:
+다른 포트는 `npm run dev -- --port 4322`로 지정합니다.
 
-```yml
-layout: archive-years
+## GitHub Pages 배포
+
+- 사이트: <https://kjae0.github.io/>
+- 저장소: <https://github.com/kjae0/kjae0.github.io>
+
+GitHub Pages의 배포 소스는 **GitHub Actions**를 사용합니다. `main`에 push하면 `.github/workflows/deploy.yml`이 사이트를 빌드하고 검사한 후 `dist/`를 자동 배포합니다. PR에서는 빌드와 검사만 실행합니다.
+
+```sh
+git clone https://github.com/kjae0/kjae0.github.io.git
+cd kjae0.github.io
+npm run dev
 ```
 
-## MathJax
+수정 후 배포:
 
-You can enable MathJax on each post or page, just set `math: true` on that page.
-
-## TOC
-
-If you want to show the Table of Contents of a post or page on the left sidebar, just set `toc: true` on that page.
-
-## Customization
-
-### Metadata
-
-You can create a file `_includes/custom-head.html` in your repository, and add any metadata into that page, e.g. favicons.
-
-### Navigation
-
-You can create a file `_data/navigation.yml` to configure links to some pages. For example,
-
-```yml
-- title: About
-  url: /about/
-- title: Categories
-  url: /categories/
-- title: Tags
-  url: /tags/
+```sh
+npm run build
+npm run check
+git add .
+git commit -m "Update homepage"
+git push origin main
 ```
 
-The navigation bar also supports dropdown submenus:
+배포 진행 상황은 저장소의 **Actions** 탭에서 확인할 수 있습니다. 기존 CV 파일은 `public/assets/my_cv.pdf`와 `public/assets/my_cv_c.pdf`에 보관하며, 기존 `/assets/my_cv.pdf`와 `/assets/my_cv_c.pdf` 주소를 유지합니다.
 
-```yml
-- title: About
-  url: /about/
-- title: Categories
-  url: /categories/
-- title: Tags
-  url: /tags/
-- title: More
-  sublinks:
-    - title: FAQ
-      url: /faq/
-    - title: Docs
-      url: /docs/
+공식 가이드: [GitHub Pages custom workflows](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).
+
+## 내용 수정
+
+대부분의 수정은 **`content/site.json` 한 파일**에서 할 수 있습니다.
+
+| 항목 | 설정 |
+| --- | --- |
+| 소개 | `bio`, `description` (`interests`는 검색용 구조화 데이터) |
+| 연락 문구와 이메일 | `contactText`, `email` (주소를 넣으면 메일 링크 표시) |
+| 프로필 링크 | `social.scholar`, `social.github`, `social.linkedin` |
+| 프로필 이미지 | `portrait`, `portraitAlt`, `portraitIsPlaceholder`, `portraitWidth`, `portraitHeight` |
+| 논문 | `publications` 배열 |
+| 소식 | `news` 배열, 최근 항목부터 입력 |
+| 학력 | `education` 배열 |
+| 최종 수정일 | `updated` (`YYYY-MM-DD`) |
+| 실제 배포 주소 | `siteUrl` |
+
+### 링크 placeholder 교체
+
+요청에 따라 Scholar, GitHub, LinkedIn 주소는 모두 빈 문자열로 두었습니다. 화면에는 이름과 아이콘이 표시되고, 포커스하거나 마우스를 올리면 “Link coming soon”이 나타납니다. 주소가 비어 있을 때는 외부 이동하지 않습니다. HTTPS 주소를 입력하면 다음 빌드부터 실제 링크가 됩니다.
+
+### 이미지 교체
+
+1. 프로필 사진을 `public/assets/images/portrait.jpg`로 저장합니다.
+2. `portrait`를 `assets/images/portrait.jpg`로 바꿉니다.
+3. `portraitAlt`를 `Portrait of Jaeyeong Kim`, `portraitIsPlaceholder`를 `false`로 바꿉니다.
+4. `portraitWidth`와 `portraitHeight`에 원본의 가로·세로 픽셀 수를 입력합니다.
+5. 논문 그림은 같은 디렉터리에 넣고 각 논문의 `image`를 `assets/images/t2mo.webp`처럼 설정합니다. 빈 값이면 placeholder를 표시합니다.
+6. 각 논문의 `imageWidth`, `imageHeight`에는 원본 이미지 또는 영상의 가로·세로 픽셀 수를 넣습니다.
+7. 동영상은 `public/assets/videos/`에 저장하고 `video`를 `assets/videos/t2mo.mp4`처럼 지정합니다. `image`는 영상이 재생되기 전의 포스터로 사용합니다.
+
+프로필과 논문 이미지는 원본 비율을 유지하며 자르지 않습니다. 현재 T2Mo는 제공받은 MP4, SpLap·MV-TAP·MORPHOS는 제공받은 PNG를 사용합니다. 모든 파일은 저장소에 포함되어 GitHub Pages에 함께 배포됩니다. 영상은 무음 반복 재생되며 기본 재생 컨트롤을 제공합니다. 동작 줄이기 설정이 켜져 있거나 JavaScript를 끈 경우 직접 재생할 수 있습니다.
+
+### 논문과 소식 추가
+
+기존 항목을 복사해 `id`, `title`, `authors`, `year`, `venue`, `links` 등을 수정합니다. `id`는 영문 소문자·숫자·하이픈으로 된 고유 값이어야 합니다. `type`은 `preprint`, `conference`, `journal` 중 하나입니다.
+
+- `preprint`: `arxiv`에 arXiv ID를 넣습니다.
+- `conference`: `booktitle`에 학회명을 넣습니다.
+- `journal`: `doi`에 DOI를 넣습니다.
+- `citationTitle`을 지정하면 화면 제목과 BibTeX 제목을 다르게 설정할 수 있습니다.
+- `news[].publication`은 연결할 논문의 `id`입니다.
+
+논문은 연도 내림차순으로 표시하며 같은 연도에서는 입력 순서를 유지합니다. 연도 필터와 BibTeX는 자동 생성됩니다. JavaScript를 꺼도 전체 논문·뉴스·학력과 링크를 읽을 수 있습니다.
+
+## 파일 구성
+
+```text
+content/site.json         프로필, 논문, 학력 및 링크
+src/index.html            HTML 템플릿
+public/assets/styles.css  레이아웃 및 반응형 스타일
+public/assets/main.js     필터, 인용 복사, 영상 재생
+public/assets/images/     이미지와 SVG placeholder
+public/assets/videos/     논문 미리보기 영상
+public/assets/fonts/      Raleway 폰트와 라이선스
+scripts/build.mjs         정적 HTML 생성
+scripts/serve.mjs         로컬 미리보기 서버
+scripts/check.mjs         빌드 검증
+.github/workflows/deploy.yml  GitHub Pages 자동 배포
+dist/                     생성 결과 — 직접 수정하지 않음
 ```
 
-### Social Media
+참고 사이트와 같은 Raleway 폰트를 자체 호스팅하며, 로드되지 않으면 Helvetica 또는 Arial을 사용합니다. CDN, 추적 스크립트, API 키 또는 백엔드 없이 동작합니다.
 
-You can create a file `_data/social.yml` to configure links to your social media. For example,
+## 콘텐츠 근거
 
-```yml
-- title: Twitter
-  url: https://twitter.com/ngzhio
-  icon: fab fa-twitter
-- title: GitHub
-  url: https://github.com/ngzhio/jekyll-theme-hamilton
-  icon: fab fa-github
-```
+학력·과정·지도교수는 사용자가 제공한 정보를 반영했고, 재학 기간과 서울대학교 전공은 입력하지 않았습니다. 연구 소개는 사용자가 제공한 연구 관심사를 영문으로 정리했습니다. News에는 학회 채택 소식만 넣었고, 정확한 발표 월을 입력받지 않아 연도만 표시합니다.
 
-### Skins
+- [Google Scholar 프로필](https://scholar.google.com/citations?user=7rvZgpEAAAAJ&hl=ko) — 이름, 소속, 논문 목록. 중복 MV-TAP 항목은 통합했습니다.
+- [T2Mo](https://arxiv.org/abs/2606.05162), [프로젝트](https://cvlab-kaist.github.io/T2Mo/) — NeurIPS 2026, 사용자가 제공한 학회 정보를 반영했습니다.
+- [MORPHOS](https://arxiv.org/abs/2606.02491)
+- [MV-TAP](https://arxiv.org/abs/2512.02006) — 저자명은 arXiv 기준, CVPR 2026은 Scholar 기준.
+- [SpLap](https://arxiv.org/abs/2511.19542), [공식 저장소](https://github.com/kjae0/SpLap) — 3DV 2026.
 
-You can select a skin by setting `skin` in `_config.yml`. The built-in skins include `daylight`, `midnight`, `sunrise`, and `sunset`. If you don't specify any skin, Hamilton would dynamically select one in these built-in skins according to different hours in a day.
-
-You can also customize a new skin, for example, a skin called `solarized`. You need to copy [`_sass/hamilton/skins/daylight.scss`](_sass/hamilton/skins/daylight.scss) into your repository and then rename it to `solarized.scss`, and adjust some colors in that file. Finally, specify `skin: solarized` in `_config.yml`.
-
-### More Customized Styles
-
-If you want to create more CSS styles in your site, creating a file `_sass/hamilton/custom-styles.scss`, and putting your code in there, Hamilton would automatically refer to them.
-
-## License
-
-The theme is available as open source under the terms of the [MIT License](LICENSE.txt).
+디자인 참고: [Chaehyun Kim](https://kchyun.github.io/). 본 사이트의 코드와 placeholder는 새로 작성했습니다.

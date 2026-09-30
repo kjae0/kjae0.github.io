@@ -32,19 +32,25 @@
     {
       "date": "2026",
       "label": "2026",
-      "text": "T2Mo has been accepted to NeurIPS 2026.",
+      "text": "**T2Mo** has been accepted to **NeurIPS 2026**.",
       "publication": "t2mo"
     },
     {
       "date": "2026",
       "label": "2026",
-      "text": "MV-TAP has been accepted to CVPR 2026.",
+      "text": "**MORPHOS** is now available on **arXiv**.",
+      "publication": "morphos"
+    },
+    {
+      "date": "2026",
+      "label": "2026",
+      "text": "**MV-TAP** has been accepted to **CVPR 2026**.",
       "publication": "mv-tap"
     },
     {
       "date": "2026",
       "label": "2026",
-      "text": "SpLap has been accepted to 3DV 2026.",
+      "text": "**SpLap** has been accepted to **3DV 2026**.",
       "publication": "splap"
     }
   ],

@@ -65,7 +65,7 @@ git push origin main
 
 ### 프로필 링크
 
-Scholar, GitHub, LinkedIn은 실제 프로필에 연결되어 있습니다. 이메일은 소개 아래 별도 줄에 표시하며, 클릭하면 메일 앱을 엽니다. 변경할 때는 `content/site.json`의 `email`과 `social`을 수정합니다. 프로필 주소를 빈 문자열로 두면 해당 링크는 “Link coming soon” placeholder로 표시됩니다.
+Scholar, GitHub, LinkedIn은 실제 프로필에 연결되어 있습니다. 이메일은 소개 아래 별도 줄에 `Email`로 표시하며, 클릭하면 메일 앱을 엽니다. 변경할 때는 `content/site.json`의 `email`과 `social`을 수정합니다. 프로필 주소를 빈 문자열로 두면 해당 링크는 “Link coming soon” placeholder로 표시됩니다.
 
 ### 이미지 교체
 
@@ -88,6 +88,7 @@ Scholar, GitHub, LinkedIn은 실제 프로필에 연결되어 있습니다. 이�
 - `journal`: `doi`에 DOI를 넣습니다.
 - `citationTitle`을 지정하면 화면 제목과 BibTeX 제목을 다르게 설정할 수 있습니다.
 - `news[].publication`은 연결할 논문의 `id`입니다.
+- `news[].text`에서 `**텍스트**`로 감싼 부분은 굵게 표시됩니다. 모델명과 학회명에 사용합니다.
 
 논문은 연도 내림차순으로 표시하며 같은 연도에서는 입력 순서를 유지합니다. 연도 필터와 BibTeX는 자동 생성됩니다. JavaScript를 꺼도 전체 논문·뉴스·학력과 링크를 읽을 수 있습니다.
 
@@ -112,7 +113,7 @@ dist/                     생성 결과 — 직접 수정하지 않음
 
 ## 콘텐츠 근거
 
-학력·과정·지도교수는 사용자가 제공한 정보를 반영했고, 재학 기간과 서울대학교 전공은 입력하지 않았습니다. 연구 소개는 사용자가 제공한 연구 관심사를 영문으로 정리했습니다. News에는 학회 채택 소식만 넣었고, 정확한 발표 월을 입력받지 않아 연도만 표시합니다.
+학력·과정·지도교수는 사용자가 제공한 정보를 반영했고, 재학 기간과 서울대학교 전공은 입력하지 않았습니다. 연구 소개는 사용자가 제공한 연구 관심사를 영문으로 정리했습니다. News에는 학회 채택과 MORPHOS의 arXiv 공개 소식을 넣었고, 정확한 발표 월을 입력받지 않아 연도만 표시합니다. 최근 다섯 항목까지 바로 표시하며, 이전 소식은 펼쳐서 볼 수 있습니다.
 
 - [Google Scholar 프로필](https://scholar.google.com/citations?user=7rvZgpEAAAAJ&hl=ko) — 이름, 소속, 논문 목록. 중복 MV-TAP 항목은 통합했습니다.
 - [T2Mo](https://arxiv.org/abs/2606.05162), [프로젝트](https://cvlab-kaist.github.io/T2Mo/) — NeurIPS 2026, 사용자가 제공한 학회 정보를 반영했습니다.

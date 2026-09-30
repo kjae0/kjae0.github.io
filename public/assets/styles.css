@@ -60,6 +60,7 @@ h2 { font-size: 20px; font-weight: 600; line-height: 1.4; }
 .news-list time { color: var(--muted); font-size: 13px; font-variant-numeric: lining-nums tabular-nums; }
 .news-list a { color: var(--ink); }
 .news-list a:hover { color: var(--link); }
+.news-list strong { font-weight: 600; }
 .earlier-news summary { list-style: none; display: flex; align-items: center; gap: 8px; width: fit-content; margin: 9px 0 0 98px; color: var(--muted); font-size: 12px; }
 .earlier-news summary::-webkit-details-marker { display: none; }
 .earlier-news summary:hover { color: var(--link); }

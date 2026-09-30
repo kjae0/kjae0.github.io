@@ -62,7 +62,7 @@ export async function build() {
   for (const item of site.news) if (!ids.has(item.publication)) throw new Error(`Unknown news publication: ${item.publication}`);
   for (const url of Object.values(site.social)) if (url && !/^https:\/\//.test(url)) throw new Error('Social links must be empty or HTTPS URLs.');
   const publications = [...site.publications].sort((a, b) => b.year - a.year);
-  const newsItem = (item) => `<li><time datetime="${e(item.date)}">${e(item.label)}</time><a href="#${e(item.publication)}">${e(item.text)}</a></li>`;
+  const newsItem = (item) => `<li><time datetime="${e(item.date)}">${e(item.label)}</time><a href="#${e(item.publication)}">${e(item.text).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')}</a></li>`;
   const social = Object.entries({ scholar: 'Scholar', github: 'GitHub', linkedin: 'LinkedIn' }).map(([key, label]) => site.social[key]
     ? `<a class="social-link" href="${e(site.social[key])}" ${external}>${icon(key)}${label}</a>`
     : `<span class="social-placeholder" role="link" aria-disabled="true" tabindex="0" aria-label="${label} — link coming soon">${icon(key)}${label}<span class="social-tooltip" aria-hidden="true">Link coming soon</span></span>`).join('');
@@ -76,11 +76,11 @@ export async function build() {
     BIO: e(site.bio), PORTRAIT: e(site.portrait), PORTRAIT_ALT: e(site.portraitAlt),
     PORTRAIT_WIDTH: e(site.portraitWidth || 460), PORTRAIT_HEIGHT: e(site.portraitHeight || 560),
     CONTACT_TEXT: e(site.contactText),
-    EMAIL_LINK: site.email ? `<a class="social-link email-link" href="mailto:${e(encodeURIComponent(site.email).replace('%40', '@'))}">${icon('email')}<span>${e(site.email)}</span></a>` : '',
+    EMAIL_LINK: site.email ? `<a class="social-link email-link" href="mailto:${e(encodeURIComponent(site.email).replace('%40', '@'))}" title="${e(site.email)}">${icon('email')}<span>Email</span></a>` : '',
     PORTRAIT_LABEL: site.portraitIsPlaceholder ? '<span class="portrait-label">Photo placeholder</span>' : '',
     SOCIAL_LINKS: social,
-    RECENT_NEWS: site.news.slice(0, 3).map(newsItem).join(''),
-    EARLIER_NEWS: site.news.length > 3 ? `<details class="earlier-news"><summary>View earlier updates <span aria-hidden="true">+</span></summary><ul class="news-list">${site.news.slice(3).map(newsItem).join('')}</ul></details>` : '',
+    RECENT_NEWS: site.news.slice(0, 5).map(newsItem).join(''),
+    EARLIER_NEWS: site.news.length > 5 ? `<details class="earlier-news"><summary>View earlier updates <span aria-hidden="true">+</span></summary><ul class="news-list">${site.news.slice(5).map(newsItem).join('')}</ul></details>` : '',
     FILTERS: ['all', ...years].map((year) => `<button type="button" data-filter="${year}" aria-pressed="${year === 'all'}">${year === 'all' ? 'All' : year}</button>`).join(''),
     PUBLICATIONS: publications.map((p) => publication(p, site.name)).join('\n'),
     EDUCATION: site.education.map((item) => `<li class="education-item"><h3>${e(item.degree)} · ${e(item.school)}</h3><p>${e(item.detail)}</p>${item.advisor ? `<p class="advisor">Advised by <a href="${e(item.advisorUrl)}" ${external}>Prof. ${e(item.advisor)}</a></p>` : ''}</li>`).join(''),

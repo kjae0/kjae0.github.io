@@ -78,6 +78,8 @@ h2 { font-size: 20px; font-weight: 600; line-height: 1.4; }
 .publication-visual > img { width: 100%; height: 100%; object-fit: contain; }
 .publication-visual.has-media { aspect-ratio: auto; background: #fff; }
 .publication-visual.has-media > img, .publication-visual > video { display: block; width: 100%; height: auto; }
+#tetris3d .publication-visual { aspect-ratio: 1.85; }
+#tetris3d .publication-visual > img { height: 100%; object-fit: cover; object-position: center top; }
 .figure-name { position: absolute; left: 12px; right: 12px; top: 50%; transform: translateY(-50%); text-align: center; font-size: 15px; font-weight: 500; color: #606060; }
 .figure-placeholder { position: absolute; bottom: 16px; font-size: 10px; color: #707070; }
 .publication h3 { font-size: 16px; line-height: 1.4; font-weight: 600; margin-bottom: 5px; }

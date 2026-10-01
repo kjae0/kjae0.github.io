@@ -32,6 +32,12 @@
     {
       "date": "2026",
       "label": "2026",
+      "text": "**Tetris3D** is coming soon to **arXiv**.",
+      "publication": "tetris3d"
+    },
+    {
+      "date": "2026",
+      "label": "2026",
       "text": "**T2Mo** has been accepted to **NeurIPS 2026**.",
       "publication": "t2mo"
     },

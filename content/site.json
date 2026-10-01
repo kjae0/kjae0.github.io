@@ -4,7 +4,7 @@
   "title": "Jaeyeong Kim · KAIST AI",
   "description": "Jaeyeong Kim is an integrated M.S./Ph.D. student at KAIST AI, advised by Prof. Seungryong Kim. Research in practical 3D/4D generative models for real-world applications.",
   "siteUrl": "https://kjae0.github.io/",
-  "updated": "2026-09-30",
+  "updated": "2026-10-02",
   "portrait": "assets/images/portrait.jpg",
   "portraitAlt": "Portrait of Jaeyeong Kim",
   "portraitIsPlaceholder": false,
@@ -73,6 +73,30 @@
     }
   ],
   "publications": [
+    {
+      "id": "tetris3d",
+      "title": "Tetris3D: 3D Scene Generation with Objects That Fit Together",
+      "shortTitle": "Tetris3D",
+      "authors": [
+        "Jaeyeong Kim",
+        "Jinhyuk Jang",
+        "Jongmin Lee",
+        "Kyehong Park",
+        "Seungryong Kim"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "type": "preprint",
+      "image": "assets/images/tetris3d.png",
+      "imageWidth": 1600,
+      "imageHeight": 1179,
+      "links": [
+        {
+          "label": "Paper",
+          "url": "https://kjae0.github.io/assets/papers/tetris3d.pdf"
+        }
+      ]
+    },
     {
       "id": "t2mo",
       "title": "T2Mo: Controllable Dynamic 3D Shape Generation via 3D Trajectories and Text",

@@ -4,7 +4,7 @@
   "title": "Jaeyeong Kim · KAIST AI",
   "description": "Jaeyeong Kim is an integrated M.S./Ph.D. student at KAIST AI, advised by Prof. Seungryong Kim. Research in practical 3D/4D generative models for real-world applications.",
   "siteUrl": "https://kjae0.github.io/",
-  "updated": "2026-10-02",
+  "updated": "2026-10-06",
   "portrait": "assets/images/portrait.jpg",
   "portraitAlt": "Portrait of Jaeyeong Kim",
   "portraitIsPlaceholder": false,
@@ -76,6 +76,21 @@
       "degree": "B.S.",
       "mark": "S",
       "current": false
+    }
+  ],
+  "experiences": [
+    {
+      "organization": "Seoul National University Hospital",
+      "role": "AI Researcher"
+    },
+    {
+      "organization": "Asteromorph",
+      "role": "Machine Learning Engineer"
+    },
+    {
+      "organization": "KAIST",
+      "role": "Research Intern",
+      "advisor": "Minhyuk Sung"
     }
   ],
   "publications": [

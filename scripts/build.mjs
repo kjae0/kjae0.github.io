@@ -1,4 +1,5 @@
 import { cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
 
@@ -50,8 +51,15 @@ function publication(p, name) {
   </article>`;
 }
 
+function profileEntry({ title, detail, advisor, advisorUrl }) {
+  const advisorName = advisorUrl ? `<a href="${e(advisorUrl)}" ${external}>Prof. ${e(advisor)}</a>` : `Prof. ${e(advisor)}`;
+  return `<li class="education-item"><h3>${e(title)}</h3><p>${e(detail)}</p>${advisor ? `<p class="advisor">Advised by ${advisorName}</p>` : ''}</li>`;
+}
+
 export async function build() {
   const site = JSON.parse(await readFile(resolve(root, 'content/site.json'), 'utf8'));
+  const stylesheet = await readFile(resolve(root, 'public/assets/styles.css'));
+  const stylesheetPath = `assets/styles.${createHash('sha256').update(stylesheet).digest('hex').slice(0, 12)}.css`;
   const ids = new Set();
   for (const p of site.publications) {
     if (!/^[a-z0-9-]+$/.test(p.id) || ids.has(p.id)) throw new Error(`Invalid or duplicate publication ID: ${p.id}`);
@@ -70,6 +78,7 @@ export async function build() {
   const structuredData = { '@context': 'https://schema.org', '@type': 'Person', name: site.name, description: site.description, knowsAbout: site.interests, affiliation: { '@type': 'CollegeOrUniversity', name: 'KAIST' }, alumniOf: { '@type': 'CollegeOrUniversity', name: 'Seoul National University' }, sameAs: Object.values(site.social).filter(Boolean) };
   if (site.siteUrl) structuredData.url = site.siteUrl;
   const replacements = {
+    STYLESHEET_URL: stylesheetPath,
     TITLE: e(site.title), DESCRIPTION: e(site.description), NAME: e(site.name), INITIALS: e(site.initials),
     AFFILIATION: e(site.affiliation), AFFILIATION_URL: e(site.affiliationUrl),
     ADVISOR: e(site.advisor), ADVISOR_URL: e(site.advisorUrl), LAB: e(site.lab), LAB_URL: e(site.labUrl),
@@ -83,8 +92,8 @@ export async function build() {
     EARLIER_NEWS: site.news.length > 5 ? `<details class="earlier-news"><summary>View earlier updates <span aria-hidden="true">+</span></summary><ul class="news-list">${site.news.slice(5).map(newsItem).join('')}</ul></details>` : '',
     FILTERS: ['all', ...years].map((year) => `<button type="button" data-filter="${year}" aria-pressed="${year === 'all'}">${year === 'all' ? 'All' : year}</button>`).join(''),
     PUBLICATIONS: publications.map((p) => publication(p, site.name)).join('\n'),
-    EDUCATION: site.education.map((item) => `<li class="education-item"><h3>${e(item.degree)} · ${e(item.school)}</h3><p>${e(item.detail)}</p>${item.advisor ? `<p class="advisor">Advised by <a href="${e(item.advisorUrl)}" ${external}>Prof. ${e(item.advisor)}</a></p>` : ''}</li>`).join(''),
-    EXPERIENCES: site.experiences.map((item) => `<li class="experience-item"><h3>${e(item.organization)}</h3><p>${e(item.role)}</p>${item.advisor ? `<p>Advised by Prof. ${e(item.advisor)}</p>` : ''}</li>`).join(''),
+    EDUCATION: site.education.map((item) => profileEntry({ title: `${item.degree} · ${item.school}`, detail: item.detail, advisor: item.advisor, advisorUrl: item.advisorUrl })).join(''),
+    EXPERIENCES: site.experiences.map((item) => profileEntry({ title: item.organization, detail: item.role, advisor: item.advisor })).join(''),
     YEAR: e(site.updated.slice(0, 4)), UPDATED: new Date(`${site.updated}T00:00:00Z`).toLocaleDateString('en-US', { month: 'long', year: 'numeric', timeZone: 'UTC' }),
     CANONICAL: site.siteUrl ? `<link rel="canonical" href="${e(site.siteUrl)}"><meta property="og:url" content="${e(site.siteUrl)}">` : '',
     STRUCTURED_DATA: JSON.stringify(structuredData).replaceAll('<', '\\u003c'),
@@ -98,6 +107,7 @@ export async function build() {
   await mkdir(out, { recursive: true });
   await rm(resolve(out, 'assets'), { recursive: true, force: true });
   await cp(resolve(root, 'public/assets'), resolve(out, 'assets'), { recursive: true });
+  await writeFile(resolve(out, stylesheetPath), stylesheet);
   await writeFile(resolve(out, 'index.html'), html);
   await writeFile(resolve(out, '.nojekyll'), '');
   console.log(`Built ${publications.length} publications → dist/`);

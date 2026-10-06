@@ -95,11 +95,11 @@ h2 { font-size: 20px; font-weight: 600; line-height: 1.4; }
 .publication:target { animation: paper-highlight 1.8s ease-out; }
 @keyframes paper-highlight { from { background: #edf3fc; } to { background: transparent; } }
 
-.education-list, .experience-list { padding-left: 21px; margin: 0; }
-.education-item, .experience-item { padding-left: 1px; margin-bottom: 16px; }
-.education-item:last-child, .experience-item:last-child { margin-bottom: 0; }
-.education-item h3, .experience-item h3 { font-size: 16px; font-weight: 500; line-height: 1.55; }
-.education-item p, .experience-item p { color: #555; font-size: 14px; margin-top: 3px; }
+.education-list { padding-left: 21px; margin: 0; }
+.education-item { padding-left: 1px; margin-bottom: 16px; }
+.education-item:last-child { margin-bottom: 0; }
+.education-item h3 { font-size: 16px; font-weight: 500; line-height: 1.55; }
+.education-item p { color: #555; font-size: 14px; margin-top: 3px; }
 .site-footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; border-top: 1px solid var(--line); margin-top: 40px; padding: 18px 0 40px; font-size: 11px; color: var(--muted); }
 
 dialog { width: min(620px, calc(100% - 32px)); max-height: calc(100dvh - 48px); padding: 26px; border: 1px solid #ddd; border-radius: 5px; background: #fff; color: var(--ink); }
@@ -140,8 +140,8 @@ dialog pre { background: #f5f5f5; padding: 16px; overflow: auto; max-height: 40d
   .paper-links a, .paper-links button { min-height: 32px; font-size: 13px; }
   .publication h3 { font-size: 16px; }
   .authors, .venue { font-size: 14px; }
-  .education-item h3, .experience-item h3 { font-size: 15px; }
-  .education-item p, .experience-item p { font-size: 13px; }
+  .education-item h3 { font-size: 15px; }
+  .education-item p { font-size: 13px; }
   dialog { padding: 20px; }
   .dialog-footer { align-items: flex-end; }
 }
@@ -155,6 +155,6 @@ dialog pre { background: #f5f5f5; padding: 16px; overflow: auto; max-height: 40d
   .social-links, .publication-filters, .paper-links button, dialog { display: none !important; }
   .publication { break-inside: avoid; }
   .publication[hidden] { display: grid !important; }
-  .education-item, .experience-item { break-inside: avoid; }
+  .education-item { break-inside: avoid; }
   a { color: inherit; }
 }

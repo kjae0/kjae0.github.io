@@ -95,11 +95,13 @@ h2 { font-size: 20px; font-weight: 600; line-height: 1.4; }
 .publication:target { animation: paper-highlight 1.8s ease-out; }
 @keyframes paper-highlight { from { background: #edf3fc; } to { background: transparent; } }
 
-.education-list { padding-left: 21px; margin: 0; }
-.education-item { padding-left: 1px; margin-bottom: 16px; }
+.education-list { list-style: none; padding: 0; margin: 0; }
+.education-item { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 14px; align-items: center; margin-bottom: 16px; }
 .education-item:last-child { margin-bottom: 0; }
 .education-item h3 { font-size: 16px; font-weight: 500; line-height: 1.55; }
 .education-item p { color: #555; font-size: 14px; margin-top: 3px; }
+.entry-logo { width: 44px; height: 44px; object-fit: contain; }
+.entry-details { min-width: 0; }
 .site-footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; border-top: 1px solid var(--line); margin-top: 40px; padding: 18px 0 40px; font-size: 11px; color: var(--muted); }
 
 dialog { width: min(620px, calc(100% - 32px)); max-height: calc(100dvh - 48px); padding: 26px; border: 1px solid #ddd; border-radius: 5px; background: #fff; color: var(--ink); }

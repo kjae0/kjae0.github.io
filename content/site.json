@@ -67,30 +67,33 @@
       "degree": "Integrated M.S. / Ph.D.",
       "advisor": "Seungryong Kim",
       "advisorUrl": "https://cvlab.kaist.ac.kr/members/faculty",
-      "mark": "K",
+      "logo": "assets/logos/kaist.gif",
       "current": true
     },
     {
       "school": "Seoul National University",
       "detail": "Bachelor of Science",
       "degree": "B.S.",
-      "mark": "S",
+      "logo": "assets/logos/snu.png",
       "current": false
     }
   ],
   "experiences": [
     {
       "organization": "Seoul National University Hospital",
-      "role": "AI Researcher"
+      "role": "AI Researcher",
+      "logo": "assets/logos/snuh.ico"
     },
     {
       "organization": "Asteromorph",
-      "role": "Machine Learning Engineer"
+      "role": "Machine Learning Engineer",
+      "logo": "assets/logos/asteromorph.png"
     },
     {
       "organization": "KAIST",
       "role": "Research Intern",
-      "advisor": "Minhyuk Sung"
+      "advisor": "Minhyuk Sung",
+      "logo": "assets/logos/kaist.gif"
     }
   ],
   "publications": [
@@ -113,8 +116,20 @@
       "imageHeight": 1179,
       "links": [
         {
+          "label": "Project",
+          "url": "https://cvlab-kaist.github.io/Tetris3D/"
+        },
+        {
           "label": "Paper",
           "url": "https://kjae0.github.io/assets/papers/tetris3d.pdf"
+        },
+        {
+          "label": "Code",
+          "url": "https://github.com/cvlab-kaist/Tetris3D"
+        },
+        {
+          "label": "arXiv",
+          "url": "#tetris3d"
         }
       ]
     },

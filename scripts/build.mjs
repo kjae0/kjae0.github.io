@@ -25,7 +25,9 @@ function citation(p) {
   if (p.type === 'journal') fields.journal = p.venue;
   if (p.arxiv) Object.assign(fields, { eprint: p.arxiv, archivePrefix: 'arXiv' });
   if (p.doi) fields.doi = p.doi;
-  fields.url = p.links.find((link) => link.label === 'arXiv')?.url || p.links[0].url;
+  const citationLinks = p.links.filter((link) => link.url.startsWith('https://'));
+  const citationUrl = citationLinks.find((link) => link.label === 'arXiv')?.url || citationLinks.find((link) => link.label === 'Paper')?.url || citationLinks[0]?.url;
+  if (citationUrl) fields.url = citationUrl;
   return `@${kind}{${p.id.replaceAll('-', '')}${p.year},\n${Object.entries(fields).map(([key, value]) => `  ${key} = {${value}}`).join(',\n')}\n}`;
 }
 
@@ -42,18 +44,18 @@ function publication(p, name) {
       <div class="publication-visual${p.image || p.video ? ' has-media' : ''}"${p.image || p.video ? '' : ' role="img" aria-label="Research figure placeholder"'}>${visual}</div>
     </div>
     <div class="publication-content">
-      <h3 id="title-${e(p.id)}"><a href="${e(p.links[0].url)}" ${external}>${e(p.title)}</a></h3>
+      <h3 id="title-${e(p.id)}"><a href="${e(p.links[0].url)}" ${p.links[0].url.startsWith('#') ? '' : external}>${e(p.title)}</a></h3>
       <p class="authors">${authors}</p>
       <p class="venue">${e(p.venue)}, ${p.year}${p.venueNote ? ` · ${e(p.venueNote)}` : ''}</p>
-      <div class="paper-links">${p.links.map((link) => `<a href="${e(link.url)}" ${external} aria-label="${e(link.label)} for ${e(p.shortTitle)}">${e(link.label)}</a>`).join('')}<button class="citation-button" data-citation="${e(p.id)}" aria-label="Show BibTeX citation for ${e(p.shortTitle)}" hidden>BibTeX</button></div>
+      <div class="paper-links">${p.links.map((link) => `<a href="${e(link.url)}" ${link.url.startsWith('#') ? '' : external} aria-label="${e(link.label)} for ${e(p.shortTitle)}">${e(link.label)}</a>`).join('')}<button class="citation-button" data-citation="${e(p.id)}" aria-label="Show BibTeX citation for ${e(p.shortTitle)}" hidden>BibTeX</button></div>
       <template id="citation-${e(p.id)}">${e(citation(p))}</template>
     </div>
   </article>`;
 }
 
-function profileEntry({ title, detail, advisor, advisorUrl }) {
+function profileEntry({ title, detail, advisor, advisorUrl, logo }) {
   const advisorName = advisorUrl ? `<a href="${e(advisorUrl)}" ${external}>Prof. ${e(advisor)}</a>` : `Prof. ${e(advisor)}`;
-  return `<li class="education-item"><h3>${e(title)}</h3><p>${e(detail)}</p>${advisor ? `<p class="advisor">Advised by ${advisorName}</p>` : ''}</li>`;
+  return `<li class="education-item"><img class="entry-logo" src="${e(logo)}" alt="" width="44" height="44" loading="lazy"><div class="entry-details"><h3>${e(title)}</h3><p>${e(detail)}</p>${advisor ? `<p class="advisor">Advised by ${advisorName}</p>` : ''}</div></li>`;
 }
 
 export async function build() {
@@ -65,7 +67,7 @@ export async function build() {
     if (!/^[a-z0-9-]+$/.test(p.id) || ids.has(p.id)) throw new Error(`Invalid or duplicate publication ID: ${p.id}`);
     ids.add(p.id);
     if (!Number.isInteger(p.year) || !p.authors?.length || !p.links?.length) throw new Error(`Incomplete publication: ${p.id}`);
-    for (const link of p.links) if (!/^https:\/\//.test(link.url)) throw new Error(`Expected HTTPS publication link: ${p.id}`);
+    for (const link of p.links) if (!/^https:\/\//.test(link.url) && link.url !== `#${p.id}`) throw new Error(`Expected HTTPS URL or self-link for publication: ${p.id}`);
   }
   for (const item of site.news) if (!ids.has(item.publication)) throw new Error(`Unknown news publication: ${item.publication}`);
   for (const url of Object.values(site.social)) if (url && !/^https:\/\//.test(url)) throw new Error('Social links must be empty or HTTPS URLs.');
@@ -92,8 +94,8 @@ export async function build() {
     EARLIER_NEWS: site.news.length > 5 ? `<details class="earlier-news"><summary>View earlier updates <span aria-hidden="true">+</span></summary><ul class="news-list">${site.news.slice(5).map(newsItem).join('')}</ul></details>` : '',
     FILTERS: ['all', ...years].map((year) => `<button type="button" data-filter="${year}" aria-pressed="${year === 'all'}">${year === 'all' ? 'All' : year}</button>`).join(''),
     PUBLICATIONS: publications.map((p) => publication(p, site.name)).join('\n'),
-    EDUCATION: site.education.map((item) => profileEntry({ title: `${item.degree} · ${item.school}`, detail: item.detail, advisor: item.advisor, advisorUrl: item.advisorUrl })).join(''),
-    EXPERIENCES: site.experiences.map((item) => profileEntry({ title: item.organization, detail: item.role, advisor: item.advisor })).join(''),
+    EDUCATION: site.education.map((item) => profileEntry({ title: `${item.degree} · ${item.school}`, detail: item.detail, advisor: item.advisor, advisorUrl: item.advisorUrl, logo: item.logo })).join(''),
+    EXPERIENCES: site.experiences.map((item) => profileEntry({ title: item.organization, detail: item.role, advisor: item.advisor, logo: item.logo })).join(''),
     YEAR: e(site.updated.slice(0, 4)), UPDATED: new Date(`${site.updated}T00:00:00Z`).toLocaleDateString('en-US', { month: 'long', year: 'numeric', timeZone: 'UTC' }),
     CANONICAL: site.siteUrl ? `<link rel="canonical" href="${e(site.siteUrl)}"><meta property="og:url" content="${e(site.siteUrl)}">` : '',
     STRUCTURED_DATA: JSON.stringify(structuredData).replaceAll('<', '\\u003c'),

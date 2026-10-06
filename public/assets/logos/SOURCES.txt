@@ -1,0 +1,17 @@
+Official logo assets, downloaded 2026-10-06 without modification.
+
+kaist.gif: emblem1.gif from the KAIST emblem download
+https://www.kaist.ac.kr/en/html/kaist/011901.html
+https://www.kaist.ac.kr/_prog/download/?file_id=7wr984byfkwizjzcfrcguf2of2w7ig
+
+snu.png: Seoul National University seal
+https://identity.snu.ac.kr/ui/1
+https://identity.snu.ac.kr/webdata/uploads/kor/image/2022/09/snu_ui_download.png
+
+snuh.ico: Seoul National University Hospital's website icon
+https://www.snuh.org/main.do
+https://www.snuh.org/asset/img/common/snuh.ico
+
+asteromorph.png: Asteromorph's website touch icon
+https://asteromorph.com/
+https://framerusercontent.com/images/6za5Fi8Yc6bntLcaVPTrp6H45I.png

@@ -84,7 +84,7 @@ export async function build() {
     FILTERS: ['all', ...years].map((year) => `<button type="button" data-filter="${year}" aria-pressed="${year === 'all'}">${year === 'all' ? 'All' : year}</button>`).join(''),
     PUBLICATIONS: publications.map((p) => publication(p, site.name)).join('\n'),
     EDUCATION: site.education.map((item) => `<li class="education-item"><h3>${e(item.degree)} · ${e(item.school)}</h3><p>${e(item.detail)}</p>${item.advisor ? `<p class="advisor">Advised by <a href="${e(item.advisorUrl)}" ${external}>Prof. ${e(item.advisor)}</a></p>` : ''}</li>`).join(''),
-    EXPERIENCES: site.experiences.map((item) => `<li class="experience-item"><h3>${e(item.role)} · ${e(item.organization)}</h3>${item.advisor ? `<p>Advised by Prof. ${e(item.advisor)}</p>` : ''}</li>`).join(''),
+    EXPERIENCES: site.experiences.map((item) => `<li class="experience-item"><h3>${e(item.organization)}</h3><p>${e(item.role)}</p>${item.advisor ? `<p>Advised by Prof. ${e(item.advisor)}</p>` : ''}</li>`).join(''),
     YEAR: e(site.updated.slice(0, 4)), UPDATED: new Date(`${site.updated}T00:00:00Z`).toLocaleDateString('en-US', { month: 'long', year: 'numeric', timeZone: 'UTC' }),
     CANONICAL: site.siteUrl ? `<link rel="canonical" href="${e(site.siteUrl)}"><meta property="og:url" content="${e(site.siteUrl)}">` : '',
     STRUCTURED_DATA: JSON.stringify(structuredData).replaceAll('<', '\\u003c'),

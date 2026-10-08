@@ -4,7 +4,7 @@
   "title": "Jaeyeong Kim · KAIST AI",
   "description": "Jaeyeong Kim is an integrated M.S./Ph.D. student at KAIST AI, advised by Prof. Seungryong Kim. Research in practical 3D/4D generative models for real-world applications.",
   "siteUrl": "https://kjae0.github.io/",
-  "updated": "2026-10-06",
+  "updated": "2026-10-08",
   "portrait": "assets/images/portrait.jpg",
   "portraitAlt": "Portrait of Jaeyeong Kim",
   "portraitIsPlaceholder": false,
@@ -32,7 +32,7 @@
     {
       "date": "2026",
       "label": "2026",
-      "text": "**Tetris3D** is coming soon to **arXiv**.",
+      "text": "**Tetris3D** is now available on **arXiv**.",
       "publication": "tetris3d"
     },
     {
@@ -101,6 +101,7 @@
       "id": "tetris3d",
       "title": "Tetris3D: 3D Scene Generation with Objects That Fit Together",
       "shortTitle": "Tetris3D",
+      "arxiv": "2610.10539",
       "authors": [
         "Jaeyeong Kim",
         "Jinhyuk Jang",
@@ -121,7 +122,7 @@
         },
         {
           "label": "Paper",
-          "url": "https://kjae0.github.io/assets/papers/tetris3d.pdf"
+          "url": "https://arxiv.org/pdf/2610.10539"
         },
         {
           "label": "Code",
@@ -129,7 +130,7 @@
         },
         {
           "label": "arXiv",
-          "url": "#tetris3d"
+          "url": "https://arxiv.org/abs/2610.10539"
         }
       ]
     },
